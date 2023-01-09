@@ -1,6 +1,6 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from views import get_all_animals, get_single_animal, get_all_locations, get_single_location, get_all_employees, get_single_employee, get_all_customers, get_single_customer, create_animal, create_location, create_employee, create_customer
+from views import get_all_animals, get_single_animal, get_all_locations, get_single_location, get_all_employees, get_single_employee, get_all_customers, get_single_customer, create_animal, create_location, create_employee, create_customer, delete_animal
 
 # Here's a class. It inherits from another class.
 # For now, think of a class as a container for functions that
@@ -112,6 +112,24 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Encode the new employee and send in response
         self.wfile.write(json.dumps(new_response).encode())
+
+
+
+    def do_DELETE(self):
+        # Set a 204 response code
+        self._set_headers(204)
+
+        # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+        # Delete a single animal from the list
+        if resource == "animals":
+            delete_animal(id)
+
+        # Encode the new animal and send in response
+        self.wfile.write("".encode())
+
+        
 
     # A method that handles any PUT request.
     def do_PUT(self):

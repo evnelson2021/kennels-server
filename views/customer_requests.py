@@ -1,7 +1,8 @@
 CUSTOMERS = [
     {
         "id": 1,
-        "name": "Ryan Tanay"
+        "email": "ryant@email.com",
+        "fullName": "Ryan Tanay"
     }
 ]
 
