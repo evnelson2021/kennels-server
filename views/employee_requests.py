@@ -26,8 +26,13 @@ def get_all_employees():
         SELECT
             a.id,
             a.name,
-            a.location_id
-        FROM employee a
+            a.address,
+            a.location_id,
+            l.name location_name,
+            l.address location_address
+        FROM Employee a
+        JOIN location l
+            ON l.id = a.location_id
         """)
 
         # Initialize an empty list to hold all employee representations

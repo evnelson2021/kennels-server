@@ -12,6 +12,8 @@ class HandleRequests(BaseHTTPRequestHandler):
     # It gives a description of the class or function
     """Controls the functionality of any GET, PUT, POST, DELETE requests to the server
     """
+
+    
     # def parse_url(self, path):
     #     # Just like splitting a string in JavaScript. If the
     #     # path is "/animals/1", the resulting list will
@@ -235,26 +237,26 @@ class HandleRequests(BaseHTTPRequestHandler):
     #     self.wfile.write("".encode())
 
 
-def do_PUT(self):
-    content_len = int(self.headers.get('content-length', 0))
-    post_body = self.rfile.read(content_len)
-    post_body = json.loads(post_body)
+    def do_PUT(self):
+        content_len = int(self.headers.get('content-length', 0))
+        post_body = self.rfile.read(content_len)
+        post_body = json.loads(post_body)
 
-    # Parse the URL
-    (resource, id) = self.parse_url(self.path)
+        # Parse the URL
+        (resource, id) = self.parse_url(self.path)
 
-    success = False
+        success = False
 
-    if resource == "animals":
-        success = update_animal(id, post_body)
-    # rest of the elif's
+        if resource == "animals":
+            success = update_animal(id, post_body)
+        # rest of the elif's
 
-    if success:
-        self._set_headers(204)
-    else:
-        self._set_headers(404)
+        if success:
+            self._set_headers(204)
+        else:
+            self._set_headers(404)
 
-    self.wfile.write("".encode())
+        self.wfile.write("".encode())
 
 
     # A method that handles any PUT request.
@@ -266,7 +268,6 @@ def do_PUT(self):
         # Notice this Docstring also includes information about the arguments passed to the function
         """Sets the status code, Content-Type and Access-Control-Allow-Origin
         headers on the response
-
         Args:
             status (number): the status code to return to the front end
         """
@@ -276,16 +277,16 @@ def do_PUT(self):
         self.end_headers()
 
     # Another method! This supports requests with the OPTIONS verb.
-    def do_OPTIONS(self):
-        """Sets the options headers
-        """
-        self.send_response(200)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Methods',
-                        'GET, POST, PUT, DELETE')
-        self.send_header('Access-Control-Allow-Headers',
-                        'X-Requested-With, Content-Type, Accept')
-        self.end_headers()
+def do_OPTIONS(self):
+    """Sets the options headers
+    """
+    self.send_response(200)
+    self.send_header('Access-Control-Allow-Origin', '*')
+    self.send_header('Access-Control-Allow-Methods',
+                    'GET, POST, PUT, DELETE')
+    self.send_header('Access-Control-Allow-Headers',
+                    'X-Requested-With, Content-Type, Accept')
+    self.end_headers()
 
 
 # This function is not inside the class. It is the starting
