@@ -152,8 +152,8 @@ def create_animal(new_animal):
         VALUES
             ( ?, ?, ?, ?, ?);
         """, (new_animal['name'], new_animal['breed'],
-            new_animal['status'], new_animal['locationId'],
-            new_animal['customerId'], ))
+            new_animal['status'], new_animal['location_id'],
+            new_animal['customer_id'], ))
 
         # The `lastrowid` property on the cursor will return
         # the primary key of the last thing that got added to
@@ -167,6 +167,7 @@ def create_animal(new_animal):
 
 
     return new_animal
+
 
 # def create_animal(animal):
 #     # Get the id value of the last animal in the list

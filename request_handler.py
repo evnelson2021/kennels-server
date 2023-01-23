@@ -110,24 +110,24 @@ class HandleRequests(BaseHTTPRequestHandler):
 
             if resource == "animals":
                 if id is not None:
-                    response = f"{get_single_animal(id)}"
+                    response = get_single_animal(id)
                 else:
-                    response = f"{get_all_animals()}"
+                    response = get_all_animals()
             elif resource == "customers":
                 if id is not None:
-                    response = f"{get_single_customer(id)}"
+                    response = get_single_customer(id)
                 else:
-                    response = f"{get_all_customers()}"
+                    response = get_all_customers()
             elif resource == "employees":
                 if id is not None:
-                    response = f"{get_single_employee(id)}"
+                    response = get_single_employee(id)
                 else:
-                    response = f"{get_all_employees()}"
+                    response = get_all_employees()
             elif resource == "locations":
                 if id is not None:
-                    response = f"{get_single_location(id)}"
+                    response = get_single_location(id)
                 else:
-                    response = f"{get_all_locations()}"
+                    response = get_all_locations()
         else: # There is a ? in the path, run the query param functions
             (resource, query) = parsed
 
