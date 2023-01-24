@@ -83,8 +83,7 @@ def get_all_animals():
         for row in dataset:
 
             # Create an animal instance from the current row
-            animal = Animal(row['id'], row['name'], row['breed'], row['status'],
-                            row['location_id'], row['customer_id'])
+            animal = Animal(row['id'], row['name'], row['breed'], row['status'], row['location_id'], row['customer_id'])
 
             # Create a Location instance from the current row
             location = Location(row['id'], row['location_name'], row['location_address'])
